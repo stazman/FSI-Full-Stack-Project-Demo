@@ -9,6 +9,15 @@ UserController.post('/', async (req, res) => {
     const { name, username, password = '' } = req.body
     const passwordDigest = await bcrypt.hash(password, 10)
     const existing = await User.find({ username })
+    if(password.length === 0){
+        return res.json({
+            error: {
+                password: {
+                    message: `Password is required`
+                }
+            }
+        })
+    }
     if(existing.length > 0){
         return res.json({
             error: {

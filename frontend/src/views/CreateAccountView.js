@@ -75,8 +75,8 @@ export function CreateAccountView() {
                             variant="outlined"
                         />
                         <TextField
-                            error={error?.passwordDigest?.message}
-                            helperText={error?.passwordDigest?.message}
+                            error={error?.password?.message}
+                            helperText={error?.password?.message}
                             value={password}
                             disabled={status !== null}
                             onChange={e => setPassword(e.target.value)}
