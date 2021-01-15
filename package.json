@@ -1,0 +1,7 @@
+{
+    "name": "1-13-project-demo",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node ./bin.js"
+    }
+}
