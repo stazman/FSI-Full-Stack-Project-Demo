@@ -63,6 +63,8 @@ LOGIN/CREATE
 .card button {
     border: 0;
     transition: 0.3s ease-in-out;
+    font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+    text-transform: uppercase;
 }
 
 .action {
@@ -83,7 +85,6 @@ LOGIN/CREATE
 .link { 
     background: white;
     text-align: left;
-    text-transform: uppercase;
     color: var(--primary-accent);
     margin: 1em 0 0 0;
     width: 46%;
