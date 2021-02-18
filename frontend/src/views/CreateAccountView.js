@@ -38,16 +38,15 @@ export function CreateAccountView() {
     return (
         <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div style={{ flex: 1, maxWidth: 500 }}>
-
-                <Card>
+                <div className="card">
                     {status === 'pending' &&
-                        <LinearProgress />
+                        <LinearProgress className="progress" />
                     }
-
-                    <div style={{ padding: '4%' }}>
-                        <Typography variant="h6" style={{ marginBottom: '4%' }}>
-                            HackerMail
-                        </Typography>
+                    <div className="card-header">
+                        <img src="assets/mailbox.png"/>
+                        <h1>Create an Account</h1>
+                    </div>
+                    <div style={{ padding: '4%',  display: 'flex', flexDirection: 'column' }}>
                         <TextField
                             error={error?.name?.message}
                             helperText={error?.name?.message}
@@ -92,16 +91,14 @@ export function CreateAccountView() {
                                 {error.message}
                             </FormHelperText>
                         }
-                        <Button disabled={status !== null} color="primary" onClick={() => history.push('/login')}>
+                        <button className="link" disabled={status !== null} onClick={() => history.push('/login')}>
                             Already have an account?
-                        </Button>
-                        <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-                            <Button disabled={status !== null} variant="contained" color="primary" onClick={createAccount}>
-                                Create Account
-                            </Button>
-                        </div>
+                        </button>
+                        <button className="action" disabled={status !== null} onClick={createAccount}>
+                            Create
+                        </button>
                     </div>
-                </Card>
+                </div>
             </div>
         </div>
     )
