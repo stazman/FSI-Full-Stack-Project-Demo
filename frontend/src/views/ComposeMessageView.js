@@ -1,4 +1,4 @@
-import { TextField, Button, LinearProgress, Card, FormHelperText, Modal, Typography, Drawer } from '@material-ui/core'
+import { TextField, Button, LinearProgress, FormHelperText, Typography, Drawer, Modal } from '@material-ui/core'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
@@ -47,10 +47,8 @@ export function ComposeMessageView() {
             {status === 'pending' &&
                 <LinearProgress />
             }
-            <div style={{ padding: '4%' }}>
-                <Typography variant="h5" component="h1" style={{ marginBottom: 15 }}>
-                    Compose Message:
-                    </Typography>
+            <div className="compose-drawer">
+                <h2>Compose Message:</h2>
                 <TextField
                     error={error?.username?.message}
                     helperText={error?.username?.message}
@@ -98,9 +96,9 @@ export function ComposeMessageView() {
                     </FormHelperText>
                 }
                 <div style={{ display: 'flex', flexDirection: 'row-reverse', marginTop: '4%' }}>
-                    <Button icon="send" disabled={status !== null} variant="contained" color="primary" onClick={createAccount}>
+                    <button disabled={status !== null} onClick={createAccount}>
                         Send
-                    </Button>
+                    </button>
                 </div>
             </div>
         </Drawer>

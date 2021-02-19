@@ -1,7 +1,8 @@
-import { Button, Card, Tooltip } from "@material-ui/core";
+import { Button, Card, Tooltip, Fab } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete'
 import UnreadIcon from '@material-ui/icons/Mail'
 import ReadIcon from '@material-ui/icons/Drafts'
+import EditIcon from '@material-ui/icons/Edit'
 
 import { useDispatch, useSelector } from "react-redux";
 import { BACKEND_URL } from "./_constants";
@@ -60,22 +61,25 @@ export function MessageActionBar() {
     }
 
     return (
-        <Card>
+        <div className="action-bar">
             <Tooltip title="Delete">
-                <Button disabled={noMessagesSelected} onClick={deleteMessages}>
+                <Button className="action-icon" disabled={noMessagesSelected} onClick={deleteMessages}>
                     <DeleteIcon />
                 </Button>
             </Tooltip>
             <Tooltip title="Mark Unread">
-                <Button disabled={noMessagesSelected} onClick={markUnread}>
+                <Button className="action-icon" disabled={noMessagesSelected} onClick={markUnread}>
                     <UnreadIcon />
                 </Button>
             </Tooltip>
             <Tooltip title="Mark Read">
-                <Button disabled={noMessagesSelected} onClick={markRead}>
+                <Button className="action-icon" disabled={noMessagesSelected} onClick={markRead}>
                     <ReadIcon />
                 </Button>
             </Tooltip>
-        </Card>
+            <Button id="compose" color="primary" onClick={() => dispatch({ type: 'OPEN_COMPOSE_MODAL' })}>
+                <EditIcon style={{ marginRight: '0.2em' }}/> COMPOSE
+            </Button>
+        </div>
     )
 }
