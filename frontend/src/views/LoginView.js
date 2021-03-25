@@ -1,4 +1,4 @@
-import { TextField, Button, LinearProgress, Card, FormHelperText, Typography } from '@material-ui/core'
+import { TextField, Button, LinearProgress, Card, FormHelperText } from '@material-ui/core'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
@@ -37,14 +37,15 @@ export function LoginView() {
     return (
         <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div style={{ flex: 1, maxWidth: 500 }}>
-                <Card>
+                <div className="card">
                     {status === 'pending' &&
-                        <LinearProgress />
+                        <LinearProgress className="progress" />
                     }
-                    <div style={{ padding: '4%' }}>
-                        <Typography variant="h6" style={{ marginBottom: '4%' }}>
-                            HackerMail
-                        </Typography>
+                    <div className="card-header">
+                        <img src="assets/mailbox.png"/>
+                        <h1>HackerMail</h1>
+                    </div>
+                    <div style={{ padding: '4%', display: 'flex', flexDirection: 'column' }}>
                         <TextField
                             error={error?.username?.message}
                             helperText={error?.username?.message}
@@ -76,16 +77,14 @@ export function LoginView() {
                                 {error.message}
                             </FormHelperText>
                         }
-                        <Button disabled={status !== null} color="primary" onClick={() => history.push('/create-account')}>
+                        <button className="link" disabled={status !== null} onClick={() => history.push('/create-account')}>
                             Create Account
-                        </Button>
-                        <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-                            <Button disabled={status !== null} variant="contained" color="primary" onClick={login}>
-                                Login
-                            </Button>
-                        </div>
+                        </button>
+                        <button className="action" disabled={status !== null} onClick={login}>
+                            Login
+                        </button>
                     </div>
-                </Card>
+                </div>
             </div>
         </div>
     )
